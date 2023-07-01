@@ -1,5 +1,19 @@
 # Code based on the following: https://www.geeksforgeeks.org/bubble-sort/
 
+import sys
+import os
+import turtle
+
+# Get the absolute path of the parent directory (main_folder)
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+# Add the parent directory to the Python path
+sys.path.append(parent_dir)
+
+# Access visualization functions
+import turtle_functions
+
+
 # Optimized Python program for implementation of Bubble Sort
 def bubbleSort(arr):
     n = len(arr)
@@ -11,10 +25,6 @@ def bubbleSort(arr):
         # Last i elements are already in place
         for j in range(0, n-i-1):
 
-            for x in range(n):
-                print("%d" % arr[x], end=" ")
-            print("\n")
-  
             # Traverse the array from 0 to n-i-1
             # Swap if the element found is greater
             # than the next element
@@ -23,15 +33,26 @@ def bubbleSort(arr):
                 swapped = True
         if (swapped == False):
             break
-  
-  
+
 # Driver code to test above
-if __name__ == "__main__":
-    arr = [2, 0, 3, 1]
-  
+def main():
+    #define array to be sorted
+    arr = [20, 40 , 30, 10]
+    turtle_functions.create_turtles(my_screen, arr)
+
     bubbleSort(arr)
   
     print("Sorted array:")
     for i in range(len(arr)):
         print("%d" % arr[i], end=" ")
+        
+  
+
+if __name__ == "__main__":
+
+    my_screen = turtle_functions.make_screen()
+    main()
+    turtle_functions.close_screen()
+
+    
   

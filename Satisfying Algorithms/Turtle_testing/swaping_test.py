@@ -37,5 +37,18 @@ for i in range(len(data)):
 
     turtles.append(bar_turtle)
 
+# Change the color of first turtle
+turtles[0].color("green")
+
+#swap first and second turtles
+turtles[0].speed(0)
+turtles[1].speed(0)
+temp_pos = turtles[0].pos()  # Store the position of the first turtle temporarily
+turtles[0].clear()
+turtles[0].goto(turtles[1].pos())  # Move the first turtle to the position of the second turtle
+turtles[1].clear()
+turtles[1].goto(temp_pos)  # Move the second turtle to the stored position of the first turtle
+
+
 # Close the turtle graphics window
 turtle.done()
