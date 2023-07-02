@@ -1,5 +1,18 @@
 import turtle
 
+# Global Variables
+base_color = "Blue"
+highlight_color = "Green"
+
+def make_screen():
+    screen = turtle.Screen()
+    screen.title("Switching Shape Positions")
+    screen.bgcolor("black")
+    return screen
+ 
+def close_screen():
+    turtle.done()
+
 def create_turtles(screen, data):
     # Get the screen size
     screen_width = screen.window_width()
@@ -13,7 +26,7 @@ def create_turtles(screen, data):
     bar_spacing = 40    # Spacing between bars
 
     # Position the turtles at the starting point
-    x_start = -right_x + bar_spacing    # Starting x-coordinate adjusted for the graph width
+    x_start = -right_x + bar_spacing    # Starting x-coordinate far left
     y_start = -150 
     turtles = []
     for i in range(len(data)):
@@ -24,7 +37,7 @@ def create_turtles(screen, data):
         bar_turtle = turtle.Turtle()
         bar_turtle.speed(0)
         bar_turtle.shape("square")
-        bar_turtle.color("blue")
+        bar_turtle.color(base_color)
         bar_turtle.penup()
         bar_turtle.goto(x, y)
 
@@ -32,26 +45,46 @@ def create_turtles(screen, data):
         bar_turtle.shapesize(stretch_wid=data[i] / 20, stretch_len=1)
         bar_turtle.stamp()
 
+        # Add turtle to list
         turtles.append(bar_turtle)
+
+    #return created turtle list
+    return turtles
+
+def swap_positions(turtles, index1, index2):
+    if len(turtles) >= 2:
+        # Set swap speed
+        turtles[index1].speed(0)
+        turtles[index2].speed(0)
+
+        # Swap turtle positions
+        temp_xpos = turtles[index1].xcor()
+        turtles[index1].clear()
+        turtles[index1].setx(turtles[index2].xcor())
+        turtles[index2].clear()
+        turtles[index2].setx(temp_xpos)
+
+        # Swap turtle objects 
+        turtles[index1], turtles[index2] = turtles[index2], turtles[index1]
+
+        
+
+def highlight_current(turtles, index):
+    arr_size = len(turtles)
+    if index is 0:
+        turtles[index].color(highlight_color)
+    elif 0 < index < arr_size:
+        turtles[index - 1].color(base_color)
+        turtles[index].color(highlight_color)
+    elif index is arr_size:
+        turtles[index - 1].color(base_color)
+    else:
+        pass
+
+
+
 
 def change_shape_colors(turtles, colors):
     for i, turtle_obj in enumerate(turtles):
         color = colors[i % len(colors)]
         turtle_obj.color(color)
-
-def swap_positions(turtles, index1, index2):
-    if len(turtles) >= 2:
-        temp_pos = turtles[index1].pos()
-        turtles[index1].clear()
-        turtles[index1].setpos(turtles[index2].pos())
-        turtles[index2].setpos(temp_pos)
-
-def make_screen():
-    screen = turtle.Screen()
-    screen.title("Switching Shape Positions")
-    screen.bgcolor("black")
-    return screen
-
- 
-def close_screen():
-    turtle.done()
