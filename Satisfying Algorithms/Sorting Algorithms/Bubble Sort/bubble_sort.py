@@ -21,7 +21,7 @@ arr = [50, 80, 120, 200, 100,
         40, 20, 230, 160, 140,
         190, 50, 220, 70, 90]
 my_turtles = turtle_functions.create_turtles(my_screen, arr)
-time.sleep(2)
+time.sleep(0.5)
 
 # Optimized Python program for implementation of Bubble Sort
 def bubbleSort(arr):
@@ -35,7 +35,7 @@ def bubbleSort(arr):
         for j in range(0, n-i-1):
 
             my_turtles[j].color("Dark Red")
-            sorting_sounds.play_SwoopOne()
+            sorting_sounds.play_NotificationFour()
 
             time.sleep(0.1)
             my_turtles[j].color("Blue")
@@ -47,8 +47,10 @@ def bubbleSort(arr):
                 turtle_functions.swap_positions(my_turtles,j,j+1)
                 my_turtles[j].color("Blue")
 
-
+    
         my_turtles[n-i-1].color("Green")
+        sorting_sounds.play_NotificationThree()
+        time.sleep(0.5)
 
 
 # Driver code to test above

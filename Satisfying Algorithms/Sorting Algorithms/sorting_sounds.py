@@ -34,12 +34,12 @@ def play_NotificationTwo():
 
 def play_NotificationThree():
     script_dir = os.path.dirname(__file__)  # Get the directory path of the current script
-    sound_file = os.path.join(script_dir, "..", "Sounds", "Notifications", "523422__andersmmg__ding-1.wav")
+    sound_file = os.path.join(script_dir, "..", "Sounds", "Notifications", "515830__newlocknew__ui_1-sweet-sawsytrusarpegiomultiprocessingrsmpl.wav")
     winsound.PlaySound(sound_file, winsound.SND_FILENAME | winsound.SND_ASYNC)
 
 def play_NotificationFour():
     script_dir = os.path.dirname(__file__)  # Get the directory path of the current script
-    sound_file = os.path.join(script_dir, "..", "Sounds", "Notifications", "quick_blip.mp3")
+    sound_file = os.path.join(script_dir, "..", "Sounds", "Notifications", "179017__smartwentcody__soft-keystroke.wav")
     winsound.PlaySound(sound_file, winsound.SND_FILENAME | winsound.SND_ASYNC)
 
 def test_sound_effect_path():

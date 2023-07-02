@@ -83,6 +83,8 @@ def swap_positions(turtles, index1, index2):
 
 
 def drop_all(screen, turtles):
+    sorting_sounds.play_SwoopOne()
+
     screen_height = screen.window_height()
     for turtle in turtles:
         turtle.speed(9)
