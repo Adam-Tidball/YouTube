@@ -1,4 +1,15 @@
 import turtle
+import sys
+import os
+
+# Get the absolute path of the parent directory (main_folder)
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+# Add the parent directory to the Python path
+sys.path.append(parent_dir)
+
+# Access visualization & sound functions 
+import sorting_sounds
 
 # Global Variables
 base_color = "Blue"
@@ -7,7 +18,7 @@ highlight_color = "Green"
 def make_screen():
     screen = turtle.Screen()
     screen.title("Switching Shape Positions")
-    screen.bgcolor("black")
+    screen.bgcolor("Black")
     return screen
  
 def close_screen():
@@ -45,6 +56,9 @@ def create_turtles(screen, data):
         bar_turtle.shapesize(stretch_wid=data[i] / 20, stretch_len=1)
         bar_turtle.stamp()
 
+        # Make a noise after each stamp
+        sorting_sounds.play_NotificationOne()
+
         # Add turtle to list
         turtles.append(bar_turtle)
 
@@ -67,7 +81,15 @@ def swap_positions(turtles, index1, index2):
         # Swap turtle objects 
         turtles[index1], turtles[index2] = turtles[index2], turtles[index1]
 
-        
+
+def drop_all(screen, turtles):
+    screen_height = screen.window_height()
+    for turtle in turtles:
+        turtle.speed(9)
+        turtle.penup()
+        turtle.sety(-screen_height)  # Set y-coordinate off the screen
+
+
 
 def highlight_current(turtles, index):
     arr_size = len(turtles)
